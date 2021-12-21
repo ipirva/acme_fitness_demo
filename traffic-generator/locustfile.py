@@ -101,7 +101,7 @@ class AuthUserBrowsing(UserBrowsing):
         self.login()
     def removeProductFromCart(self, userid, productid):
         """Removes a specific product from the cart by setting the quantity of the product to 0"""
-        response = self.client.post("/cart/item/modify/"+userid, json={"itemid": productid, "quantity": 0})
+        response = self.client.post("/cart/item/modify/"+userid, json={"itemid": productid, "quantity": 0}, verify=False)
         if response.ok:
             logging.debug("Auth User - Removed item: "+productid+" for user: "+userid)
         else:
@@ -112,7 +112,7 @@ class AuthUserBrowsing(UserBrowsing):
         """Login a random user"""
         user = random.choice(users)
         logging.debug("Auth User - Login user " + user)
-        response = self.client.post("/login/", json={"username": user, "password":"vmware1!"})
+        response = self.client.post("/login/", json={"username": user, "password":"vmware1!"}, verify=False)
         if response.ok:
             body = response.json()
             self.user.userid = body["token"]
@@ -132,7 +132,7 @@ class AuthUserBrowsing(UserBrowsing):
                   "shortDescription": "Test add to cart",
                   "quantity": random.randint(1,2),
                   "itemid": productid
-                })
+                },verify=False)
     @task
     def removeFromCart(self):
         """Remove a random product from the cart. Helps prevent the cart from overflowing"""
@@ -144,8 +144,8 @@ class AuthUserBrowsing(UserBrowsing):
         if not self.user.userid:
             logging.warning("Not logged in, skipping 'Add to Checkout'")
             return
-        userCart = self.client.get("/cart/items/" + self.user.userid).json()
-        order = self.client.post("/order/add/"+ self.user.userid, json=self.Order_Info)
+        userCart = self.client.get("/cart/items/" + self.user.userid,verify=False).json()
+        order = self.client.post("/order/add/"+ self.user.userid, json=self.Order_Info, verify=False)
 class UserBehavior(SequentialTaskSet):
     tasks = [AuthUserBrowsing, UserBrowsing]
 class WebSiteUser(HttpUser):
