@@ -1,6 +1,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namespace: acmeshop
+namespace: acme-shop
 resources:
 - catalog-total.yaml
 - catalog-db-total.yaml
