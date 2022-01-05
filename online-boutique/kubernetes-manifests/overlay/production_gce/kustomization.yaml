@@ -4,10 +4,10 @@ resources:
 - ../../base/
 - secrets
 - cart
-- catalog
-- frontend
+# - catalog
+# - frontend
 - order
 - payment
 - pos
-- users
-- tracer
+# - users
+# - tracer
