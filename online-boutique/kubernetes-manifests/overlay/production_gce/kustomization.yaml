@@ -5,7 +5,7 @@ resources:
 - secrets
 - cart
 # - catalog
-# - frontend
+- frontend
 - order
 - payment
 - pos
