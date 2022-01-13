@@ -43,6 +43,8 @@ spec:
         imagePullPolicy: "Always"
         name: catalog
         env:
+        - name: GIN_MODE
+          value: 'release'
         - name: CATALOG_DB_HOST
           value: 'catalog-mongo.acmeshop.cloud'
         - name: CATALOG_DB_PASSWORD
