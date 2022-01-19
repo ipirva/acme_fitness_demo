@@ -23,7 +23,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: acmefit  # has to match .spec.template.metadata.labels
+      app: acmefit-users-redis  # has to match .spec.template.metadata.labels
       service: users-redis
   replicas: 1
   template:
