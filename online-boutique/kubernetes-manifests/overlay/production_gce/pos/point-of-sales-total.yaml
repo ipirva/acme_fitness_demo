@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: pos
   labels:
-    app: acmefit
+    app: acmefit-pos
     service: pos
 spec:
   ports:
@@ -13,7 +13,7 @@ spec:
       targetPort: 7777
       nodePort: 30431
   selector:
-    app: acmefit
+    app: acmefit-pos
     service: pos
   type: NodePort
 ---
@@ -22,12 +22,12 @@ kind: Deployment
 metadata:
   name: pos
   labels:
-    app: acmefit
+    app: acmefit-pos
     service: pos
 spec:
   selector:
     matchLabels:
-      app: acmefit
+      app: acmefit-pos
       service: pos
   strategy:
     type: Recreate
@@ -35,7 +35,7 @@ spec:
   template:
     metadata:
       labels:
-        app: acmefit
+        app: acmefit-pos
         service: pos
     spec:
       containers:
