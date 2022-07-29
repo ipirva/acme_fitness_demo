@@ -6,8 +6,8 @@ import random
 import logging
 
 # List of users (pre-loaded into ACME Fitness shop)
-users = ["eric", "phoebe", "dwight", "han", "elaine", "walter"]
-
+# users = ["eric", "phoebe", "dwight", "han", "elaine", "walter"]
+users = ["eric", "phoebe", "dwight", "han", "elaine"]
 # GuestUserBrowsing simulates traffic for a Guest User (Not logged in)
 class UserBrowsing(SequentialTaskSet):
     def on_start(self):
