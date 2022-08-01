@@ -5,6 +5,8 @@ metadata:
   labels:
     tsm_gslb_group: ActiveGroup
     tsm_gslb_weight: primaryload
+    app: acmefit-frontend
+    service: frontend
 spec:
   ports:
     - name: http-frontend

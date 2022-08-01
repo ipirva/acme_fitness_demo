@@ -4,6 +4,8 @@ metadata:
   name: frontend
   labels:
     tsm_gslb_group: PassiveGroup
+    app: acmefit-frontend
+    service: frontend
 spec:
   ports:
     - name: http-frontend
