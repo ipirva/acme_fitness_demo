@@ -21,10 +21,6 @@ apiVersion: apps/v1 # for versions before 1.8.0 use apps/v1beta1
 kind: Deployment
 metadata:
   name: frontend
-  labels:
-    app: acmefit-frontend
-    service: frontend
-    version: frontend-v0
 spec:
   selector:
     matchLabels:
@@ -75,10 +71,6 @@ apiVersion: apps/v1 # for versions before 1.8.0 use apps/v1beta1
 kind: Deployment
 metadata:
   name: frontend-v1
-  labels:
-    app: acmefit-frontend
-    service: frontend
-    version: frontend-v1
 spec:
   selector:
     matchLabels:
@@ -97,7 +89,7 @@ spec:
     spec:
       containers:
       - image: myharbor.play.p2o.be/acmeshop/acmeshop-front-end:ipirva-v1
-        name: frontend-v1
+        name: frontend
         env:
         - name: FRONTEND_PORT
           value: '3000'
