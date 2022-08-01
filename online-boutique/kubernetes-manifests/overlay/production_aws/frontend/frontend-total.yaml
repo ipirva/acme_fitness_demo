@@ -15,7 +15,6 @@ spec:
   selector:
     app: acmefit-frontend
     service: frontend
-    version: frontend-v0
   type: LoadBalancer
 ---
 apiVersion: apps/v1 # for versions before 1.8.0 use apps/v1beta1
