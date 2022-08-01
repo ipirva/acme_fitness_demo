@@ -6,7 +6,6 @@ resources:
 # - cart
 - catalog
 - frontend
-- frontend-v1
 # - order
 # - payment
 # - pos
