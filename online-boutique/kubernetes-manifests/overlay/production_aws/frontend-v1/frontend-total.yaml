@@ -5,6 +5,7 @@ metadata:
   labels:
     app: acmefit-frontend
     service: frontend-v1
+    version: frontend-v1
 spec:
   ports:
     - name: http-frontend
@@ -15,6 +16,7 @@ spec:
   selector:
     app: acmefit-frontend
     service: frontend-v1
+    version: frontend-v1
   type: LoadBalancer
 ---
 apiVersion: apps/v1 # for versions before 1.8.0 use apps/v1beta1
@@ -23,12 +25,14 @@ metadata:
   name: frontend-v1
   labels:
     app: acmefit-frontend
-    service: frontend-V1
+    service: frontend-v1
+    version: frontend-v1
 spec:
   selector:
     matchLabels:
       app: acmefit-frontend
       service: frontend-v1
+      version: frontend-v1
   strategy:
     type: Recreate
   replicas: 1
@@ -37,6 +41,7 @@ spec:
       labels:
         app: acmefit-frontend
         service: frontend-v1
+        version: frontend-v1
     spec:
       containers:
       - image: myharbor.play.p2o.be/acmeshop/acmeshop-front-end:ipirva-v1

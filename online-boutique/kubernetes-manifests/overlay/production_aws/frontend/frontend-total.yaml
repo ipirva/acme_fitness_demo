@@ -15,6 +15,7 @@ spec:
   selector:
     app: acmefit-frontend
     service: frontend
+    version: frontend-v0
   type: LoadBalancer
 ---
 apiVersion: apps/v1 # for versions before 1.8.0 use apps/v1beta1
@@ -24,11 +25,13 @@ metadata:
   labels:
     app: acmefit-frontend
     service: frontend
+    version: frontend-v0
 spec:
   selector:
     matchLabels:
       app: acmefit-frontend
       service: frontend
+      version: frontend-v0
   strategy:
     type: Recreate
   replicas: 1
@@ -37,6 +40,7 @@ spec:
       labels:
         app: acmefit-frontend
         service: frontend
+        version: frontend-v0
     spec:
       containers:
       - image: gcr.io/vmwarecloudadvocacy/acmeshop-front-end:latest
