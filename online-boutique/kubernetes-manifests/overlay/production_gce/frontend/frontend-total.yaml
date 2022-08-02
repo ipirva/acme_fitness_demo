@@ -90,7 +90,7 @@ spec:
         version: shopping-v1
     spec:
       containers:
-      - image: myharbor.play.p2o.be/acmeshop/acmeshop-front-end:ipirva-v1
+      - image: myharbor.play.p2o.be/acmeshop/acmeshop-front-end:ipirva-old-v1
         name: shopping-v1
         env:
         - name: FRONTEND_PORT
