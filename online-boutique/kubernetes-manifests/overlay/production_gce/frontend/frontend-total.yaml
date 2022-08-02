@@ -67,53 +67,53 @@ spec:
         ports:
         - containerPort: 3000
           name: frontend
----
-apiVersion: apps/v1 # for versions before 1.8.0 use apps/v1beta1
-kind: Deployment
-metadata:
-  name: frontend-v1
-spec:
-  selector:
-    matchLabels:
-      app: acmefit-frontend
-      service: frontend
-      version: frontend-v1
-  strategy:
-    type: Recreate
-  replicas: 1
-  template:
-    metadata:
-      labels:
-        app: acmefit-frontend
-        service: frontend
-        version: frontend-v1
-    spec:
-      containers:
-      - image: myharbor.play.p2o.be/acmeshop/acmeshop-front-end:ipirva-v1
-        name: frontend-v1
-        env:
-        - name: FRONTEND_PORT
-          value: '3000'
-        - name: USERS_HOST
-          value: 'users.acmeshop.cloud'
-        - name: CATALOG_HOST
-          value: 'catalog.acmeshop.cloud'
-        - name: ORDER_HOST
-          value: 'order.acmeshop.cloud'
-        - name: CART_HOST
-          value: 'cart.acmeshop.cloud'
-        - name: USERS_PORT
-          value: '8083'
-        - name: CATALOG_PORT
-          value: '8082'
-        - name: CART_PORT
-          value: '5000'
-        - name: ORDER_PORT
-          value: '6000'
-        - name: JAEGER_AGENT_HOST
-          value: 'jaeger-agent.acmeshop.cloud'
-        - name: JAEGER_AGENT_PORT
-          value: '6832'
-        ports:
-        - containerPort: 3000
-          name: frontend
+# ---
+# apiVersion: apps/v1 # for versions before 1.8.0 use apps/v1beta1
+# kind: Deployment
+# metadata:
+#   name: frontend-v1
+# spec:
+#   selector:
+#     matchLabels:
+#       app: acmefit-frontend
+#       service: frontend
+#       version: frontend-v1
+#   strategy:
+#     type: Recreate
+#   replicas: 1
+#   template:
+#     metadata:
+#       labels:
+#         app: acmefit-frontend
+#         service: frontend
+#         version: frontend-v1
+#     spec:
+#       containers:
+#       - image: myharbor.play.p2o.be/acmeshop/acmeshop-front-end:ipirva-v1
+#         name: frontend-v1
+#         env:
+#         - name: FRONTEND_PORT
+#           value: '3000'
+#         - name: USERS_HOST
+#           value: 'users.acmeshop.cloud'
+#         - name: CATALOG_HOST
+#           value: 'catalog.acmeshop.cloud'
+#         - name: ORDER_HOST
+#           value: 'order.acmeshop.cloud'
+#         - name: CART_HOST
+#           value: 'cart.acmeshop.cloud'
+#         - name: USERS_PORT
+#           value: '8083'
+#         - name: CATALOG_PORT
+#           value: '8082'
+#         - name: CART_PORT
+#           value: '5000'
+#         - name: ORDER_PORT
+#           value: '6000'
+#         - name: JAEGER_AGENT_HOST
+#           value: 'jaeger-agent.acmeshop.cloud'
+#         - name: JAEGER_AGENT_PORT
+#           value: '6832'
+#         ports:
+#         - containerPort: 3000
+#           name: frontend
