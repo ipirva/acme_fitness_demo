@@ -1,9 +1,10 @@
+---
 apiVersion: v1
 kind: Service
 metadata:
   name: catalog
   labels:
-    app: acmefit-catalog
+    app: catalog
     service: catalog
 spec:
   ports:
@@ -11,7 +12,7 @@ spec:
       protocol: TCP
       port: 8082
   selector:
-    app: acmefit-catalog
+    app: catalog
     service: catalog
 ---
 apiVersion: apps/v1
@@ -19,34 +20,34 @@ kind: Deployment
 metadata:
   name: catalog
   labels:
-    app: acmefit-catalog
+    app: catalog
     service: catalog
+    version: v1
 spec:
   selector:
     matchLabels:
-      app: acmefit-catalog
+      app: catalog
       service: catalog
+      version: v1
   strategy:
     type: Recreate
   replicas: 1
   template:
     metadata:
       labels:
-        app: acmefit-catalog
+        app: catalog
         service: catalog
+        version: v1
     spec:
       volumes:
-      - name: acmefit-catalog-data
+      - name: catalog-data
         emptyDir: {}
       containers:
-      - image: gcr.io/vmwarecloudadvocacy/acmeshop-catalog:latest
-        imagePullPolicy: "Always"
+      - image: gcr.io/vmwarecloudadvocacy/acmeshop-catalog:rel1
         name: catalog
         env:
-        - name: GIN_MODE
-          value: 'release'
         - name: CATALOG_DB_HOST
-          value: 'catalog-mongo.acmeshop.cloud'
+          value: 'catalog-mongo'
         - name: CATALOG_DB_PASSWORD
           valueFrom:
             secretKeyRef:
@@ -58,22 +59,12 @@ spec:
           value: 'mongoadmin'
         - name: CATALOG_PORT
           value: '8082'
-        - name: CATALOG_VERSION
-          value: 'v1'
-        - name: USERS_HOST
-          value: 'users.acmeshop.cloud'
-        - name: USERS_PORT
-          value: '8083'
-        - name: JAEGER_AGENT_HOST
-          value: 'jaeger-agent.acmeshop.cloud'
-        - name: JAEGER_AGENT_PORT
-          value: '6831'
         ports:
         - containerPort: 8082
-          name: catalog
+          name: http-catalog
         volumeMounts:
         - mountPath: "/data"
-          name: "acmefit-catalog-data"
+          name: "catalog-data"
         resources:
           requests:
             memory: "64Mi"

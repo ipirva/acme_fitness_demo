@@ -1,9 +1,10 @@
+---
 apiVersion: v1
 kind: Service
 metadata:
   name: order
   labels:
-    app: acmefit-order
+    app: order
     service: order
 spec:
   ports:
@@ -11,7 +12,7 @@ spec:
       protocol: TCP
       port: 6000
   selector:
-    app: acmefit-order
+    app: order
     service: order
 ---
 apiVersion: apps/v1 # for versions before 1.8.0 use apps/v1beta1
@@ -19,12 +20,12 @@ kind: Deployment
 metadata:
   name: order
   labels:
-    app: acmefit-order
+    app: order
     service: order
 spec:
   selector:
     matchLabels:
-      app: acmefit-order
+      app: order
       service: order
   strategy:
     type: Recreate
@@ -32,57 +33,39 @@ spec:
   template:
     metadata:
       labels:
-        app: acmefit-order
+        app: order
         service: order
     spec:
       volumes:
-      - name: acmefit-order-data
+      - name: order-data
         emptyDir: {}
       containers:
-      - image: gcr.io/vmwarecloudadvocacy/acmeshop-order:latest
-        # orderpostgres:latest
+      - image: gcr.io/vmwarecloudadvocacy/acmeshop-order:1.0.1
         name: order
         env:
         - name: ORDER_DB_HOST
-          value: order-postgres
+          value: 'order-mongo'
         - name: ORDER_DB_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: order-postgres-pass
+              name: order-mongo-pass
               key: password
         - name: ORDER_DB_PORT
-          value: '5432'
-        - name: AUTH_MODE
-          value: '1'
+          value: '27017'
         - name: ORDER_DB_USERNAME
-          value: pgbench
-        - name: PGPASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: order-postgres-pass
-              key: password
-        - name: ORDER_AUTH_DB
-          value: postgres
+          value: 'mongoadmin'
         - name: ORDER_PORT
           value: '6000'
         - name: PAYMENT_PORT
           value: '9000'
         - name: PAYMENT_HOST
-          value: 'payment.acmeshop.cloud'
-        - name: USER_HOST
-          value: 'users.acmeshop.cloud'
-        - name: USER_PORT
-          value: '8083'
-        - name: JAEGER_AGENT_HOST
-          value: 'jaeger-agent.acmeshop.cloud'
-        - name: JAEGER_AGENT_PORT
-          value: '6831'
+          value: 'payment'
         ports:
         - containerPort: 6000
-          name: order
+          name: http-order
         volumeMounts:
         - mountPath: "/data"
-          name: "acmefit-order-data"
+          name: "order-data"
         resources:
           requests:
             memory: "64Mi"

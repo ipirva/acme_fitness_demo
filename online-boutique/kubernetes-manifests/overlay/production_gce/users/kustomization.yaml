@@ -3,6 +3,5 @@ kind: Kustomization
 namespace: acme-shop
 resources:
 - users-total.yaml
-- users-redis-total.yaml
 - users-db-total.yaml
 - users-db-initdb-configmap.yaml

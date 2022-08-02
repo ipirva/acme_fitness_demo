@@ -8,6 +8,4 @@ resources:
 - frontend
 # - order
 # - payment
-# - pos
 - users
-# - tracer

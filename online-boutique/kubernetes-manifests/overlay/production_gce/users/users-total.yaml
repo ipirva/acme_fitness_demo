@@ -1,17 +1,18 @@
+---
 apiVersion: v1
 kind: Service
 metadata:
   name: users
   labels:
-    app: acmefit-users
+    app: users
     service: users
 spec:
   ports:
     - name: http-users
       protocol: TCP
-      port: 8083
+      port: 8081
   selector:
-    app: acmefit-users
+    app: users
     service: users
 ---
 apiVersion: apps/v1
@@ -19,12 +20,12 @@ kind: Deployment
 metadata:
   name: users
   labels:
-    app: acmefit-users
+    app: users
     service: users
 spec:
   selector:
     matchLabels:
-      app: acmefit-users
+      app: users
       service: users
   strategy:
     type: Recreate
@@ -32,19 +33,18 @@ spec:
   template:
     metadata:
       labels:
-        app: acmefit-users
+        app: users
         service: users
     spec:
       volumes:
-      - name: acmefit-users-data
+      - name: users-data
         emptyDir: {}
       containers:
-      - image: gcr.io/vmwarecloudadvocacy/acmeshop-user:latest
-        imagePullPolicy: "Always"
+      - image: gcr.io/vmwarecloudadvocacy/acmeshop-user:1.0.0
         name: users
         env:
         - name: USERS_DB_HOST
-          value: 'users-mongo.acmeshop.cloud'
+          value: 'users-mongo'
         - name: USERS_DB_PASSWORD
           valueFrom:
             secretKeyRef:
@@ -55,26 +55,13 @@ spec:
         - name: USERS_DB_USERNAME
           value: 'mongoadmin'
         - name: USERS_PORT
-          value: '8083'
-        - name: REDIS_HOST
-          value: 'users-redis.acmeshop.cloud'
-        - name: REDIS_PORT
-          value: '6379'
-        - name: REDIS_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: users-redis-pass
-              key: password
-        - name: JAEGER_AGENT_HOST
-          value: 'jaeger-agent.acmeshop.cloud'
-        - name: JAEGER_AGENT_PORT
-          value: '6831'
+          value: '8081'
         ports:
-        - containerPort: 8083
-          name: users
+        - containerPort: 8081
+          name: http-users
         volumeMounts:
         - mountPath: "/data"
-          name: "acmefit-users-data"
+          name: "users-data"
         resources:
           requests:
             memory: "64Mi"
