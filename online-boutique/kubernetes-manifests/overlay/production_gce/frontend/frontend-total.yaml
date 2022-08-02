@@ -92,6 +92,7 @@ spec:
       containers:
       - image: myharbor.play.p2o.be/acmeshop/acmeshop-front-end:ipirva-old-v1
         name: shopping-v1
+        imagePullPolicy: Always
         env:
         - name: FRONTEND_PORT
           value: '3000'
