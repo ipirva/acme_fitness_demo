@@ -1,0 +1,20 @@
+{
+    "description": "policy to split 90% of traffic to version 0 and 10% of traffic to version 1",
+    "service": "shopping",
+    "traffic_policy": {
+      "http": [
+        {
+          "targets": [
+            {
+              "service_version": "shopping-v0",
+              "weight": 90
+            },
+            {
+              "service_version": "shoppping-v1",
+              "weight": 10
+            }
+          ]
+        }
+      ]
+    }
+  }

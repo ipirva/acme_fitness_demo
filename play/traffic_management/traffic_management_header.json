@@ -1,0 +1,36 @@
+{
+    "description": "policy to route traffic that comes with env: dev in header to version 1",
+    "service": "shopping",
+    "traffic_policy": {
+      "http": [
+        {
+          "name": "ipirva-acmeshoptest-shopping",
+          "matches": [
+            {
+              "headers": {
+                "type": "Exact",
+                "value": [
+                  {
+                    "k": "env",
+                    "v": "dev"
+                  }
+                ]
+              }
+            }
+          ],
+          "targets": [
+            {
+              "service_version": "shopping-v1"
+            }
+          ]
+        },
+        {
+          "targets": [
+            {
+              "service_version": "shopping-v0"
+            }
+          ]
+        }
+      ]
+    }
+}
