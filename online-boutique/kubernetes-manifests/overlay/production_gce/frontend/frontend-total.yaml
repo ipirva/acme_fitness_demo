@@ -22,13 +22,13 @@ metadata:
   labels:
     app: shopping
     service: shopping
-    # version: shopping-v0
+    version: shopping-v0
 spec:
   selector:
     matchLabels:
       app: shopping
       service: shopping
-      # version: shopping-v0
+      version: shopping-v0
   strategy:
     type: Recreate
   replicas: 1
@@ -37,7 +37,7 @@ spec:
       labels:
         app: shopping
         service: shopping
-        # version: shopping-v0
+        version: shopping-v0
     spec:
       containers:
       - image: gcr.io/vmwarecloudadvocacy/acmeshop-front-end:rel1
@@ -64,54 +64,54 @@ spec:
         ports:
         - containerPort: 3000
           name: http-shopping
-# ---
-# apiVersion: apps/v1 # for versions before 1.8.0 use apps/v1beta1
-# kind: Deployment
-# metadata:
-#   name: shopping-v1
-#   labels:
-#     app: shopping
-#     service: shopping
-#     version: shopping-v1
-# spec:
-#   selector:
-#     matchLabels:
-#       app: shopping
-#       service: shopping
-#       version: shopping-v1
-#   strategy:
-#     type: Recreate
-#   replicas: 1
-#   template:
-#     metadata:
-#       labels:
-#         app: shopping
-#         service: shopping
-#         version: shopping-v1
-#     spec:
-#       containers:
-#       - image: myharbor.play.p2o.be/acmeshop/acmeshop-front-end:ipirva-old-v1
-#         name: shopping-v1
-#         imagePullPolicy: Always
-#         env:
-#         - name: FRONTEND_PORT
-#           value: '3000'
-#         - name: USERS_HOST
-#           value: 'users'
-#         - name: CATALOG_HOST
-#           value: 'catalog'
-#         - name: ORDER_HOST
-#           value: 'order'
-#         - name: CART_HOST
-#           value: 'cart'
-#         - name: USERS_PORT
-#           value: '8081'
-#         - name: CATALOG_PORT
-#           value: '8082'
-#         - name: CART_PORT
-#           value: '5000'
-#         - name: ORDER_PORT
-#           value: '6000'
-#         ports:
-#         - containerPort: 3000
-#           name: http-shopping
+---
+apiVersion: apps/v1 # for versions before 1.8.0 use apps/v1beta1
+kind: Deployment
+metadata:
+  name: shopping-v1
+  labels:
+    app: shopping
+    service: shopping
+    version: shopping-v1
+spec:
+  selector:
+    matchLabels:
+      app: shopping
+      service: shopping
+      version: shopping-v1
+  strategy:
+    type: Recreate
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: shopping
+        service: shopping
+        version: shopping-v1
+    spec:
+      containers:
+      - image: myharbor.play.p2o.be/acmeshop/acmeshop-front-end:ipirva-old-v1
+        name: shopping-v1
+        imagePullPolicy: Always
+        env:
+        - name: FRONTEND_PORT
+          value: '3000'
+        - name: USERS_HOST
+          value: 'users'
+        - name: CATALOG_HOST
+          value: 'catalog'
+        - name: ORDER_HOST
+          value: 'order'
+        - name: CART_HOST
+          value: 'cart'
+        - name: USERS_PORT
+          value: '8081'
+        - name: CATALOG_PORT
+          value: '8082'
+        - name: CART_PORT
+          value: '5000'
+        - name: ORDER_PORT
+          value: '6000'
+        ports:
+        - containerPort: 3000
+          name: http-shopping
