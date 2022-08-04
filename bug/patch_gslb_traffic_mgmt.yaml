@@ -1,0 +1,14 @@
+spec:
+  subsets:
+  - name: shopping-v0
+    labels:
+      version: shopping-v0
+    trafficPolicy:
+      tls:
+        mode: ISTIO_MUTUAL
+  - labels:
+      version: shopping-v1
+    name: shopping-v1
+    trafficPolicy:
+      tls:
+        mode: DISABLE
