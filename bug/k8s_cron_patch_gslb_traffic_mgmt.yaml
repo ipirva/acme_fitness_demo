@@ -1,0 +1,53 @@
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: patch-runner
+rules:
+- apiGroups: ["networking.istio.io"]
+  resources: ["destinationrules"]
+  verbs: ["patch", "get", "list"]
+
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: patch-runner
+subjects:
+- kind: ServiceAccount
+  name: sa-patch-runner
+  namespace: acme-shop-test
+  apiGroup: ""
+roleRef:
+  kind: ClusterRole
+  name: patch-runner
+  apiGroup: rbac.authorization.k8s.io
+
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: sa-patch-runner
+  namespace: acme-shop-test
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello
+  namespace: acme-shop-test
+spec:
+  serviceAccountName: sa-patch-runner
+  containers:
+  - name: hello
+    image: bitnami/kubectl:latest
+    imagePullPolicy: IfNotPresent
+    command:
+    - /bin/sh
+    - -c
+    - >-
+      curl https://raw.githubusercontent.com/ipirva/acme_fitness_demo/master/bug/patch_gslb_traffic_mgmt.yaml --output /tmp/patch_gslb_traffic_mgmt.yaml &&
+      while : 
+        do 
+          kubectl patch destinationrules nsxsm.gns.ipirva-acmeshop.shopping -n acme-shop-test --patch-file /tmp/patch_gslb_traffic_mgmt.yaml --type merge; 
+          sleep 5
+        done
