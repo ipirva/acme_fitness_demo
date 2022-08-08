@@ -48,7 +48,7 @@ spec:
         env:
         - name: REDIS_HOST
           value: 'cart-redis'
-        - name: REDIS_PASS
+        - name: REDIS_PASSWORD
           valueFrom:
             secretKeyRef:
               name: redis-pass
