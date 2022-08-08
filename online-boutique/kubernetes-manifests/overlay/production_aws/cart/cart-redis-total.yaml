@@ -11,6 +11,7 @@ spec:
   ports:
     - port: 6379
       name: tcp-redis-cart
+      protocol: TCP
   selector:
     app: cart-redis
     service: cart-redis
