@@ -42,7 +42,7 @@ spec:
           command:
             - /bin/sh
             - -c
-            - redis-server --requirepass "$${REDIS_PASSWORD:?REDIS_PASSWORD variable is not set}"
+            - redis-server --requirepass "$${REDIS_PASSWORD:?REDIS_PASSWORD variable is not set}" --protected-mode no
           #- "redis-server"
           imagePullPolicy: Always
           resources:
