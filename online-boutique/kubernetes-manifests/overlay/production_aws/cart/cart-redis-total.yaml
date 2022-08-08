@@ -39,8 +39,10 @@ spec:
       containers:
         - name: cart-redis
           image: redis
-          command: >
-            --requirepass ${REDIS_PASSWORD}
+          command:
+            - /bin/sh
+            - -c
+            - redis-server --requirepass "$${REDIS_PASSWORD:?REDIS_PASSWORD variable is not set}"
           #- "redis-server"
           imagePullPolicy: Always
           resources:
