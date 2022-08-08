@@ -39,8 +39,9 @@ spec:
       containers:
         - name: cart-redis
           image: redis
-          command:
-            - "redis-server"
+          command: >
+            --requirepass ${REDIS_PASSWORD}
+          #- "redis-server"
           imagePullPolicy: Always
           resources:
             requests:
@@ -53,7 +54,7 @@ spec:
           env:
           - name: REDIS-HOST
             value: 'cart-redis'
-          - name: REDIS_PASS
+          - name: REDIS_PASSWORD
             valueFrom:
               secretKeyRef:
                 name: redis-pass
