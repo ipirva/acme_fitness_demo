@@ -25,7 +25,7 @@ images:
   newTag: 'ipirva-v1'
 - name: acmeshop-payment
   newName: gcr.io/vmwarecloudadvocacy/acmeshop-payment
-  newTag: 'latest'
+  newTag: 'stable'
 - name: acmeshop-catalog
   newName: gcr.io/vmwarecloudadvocacy/acmeshop-catalog
   newTag: 'latest'
@@ -37,4 +37,4 @@ images:
   newTag: 'latest'
 - name: acmeshop-order
   newName: gcr.io/vmwarecloudadvocacy/acmeshop-order
-  newTag: 'latest'
+  newTag: 'stable'
