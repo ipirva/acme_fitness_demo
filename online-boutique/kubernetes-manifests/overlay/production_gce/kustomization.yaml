@@ -15,7 +15,7 @@ images:
   newName: mongo
   newTag: '4'
 - name: redis
-  newName: redis
+  newName: bitnami/redis
   newTag: 'latest' #5.0.3-alpine
 - name: acmeshop-front-end
   newName: gcr.io/vmwarecloudadvocacy/acmeshop-front-end
@@ -31,7 +31,7 @@ images:
   newTag: 'latest'
 - name: acmeshop-user
   newName: gcr.io/vmwarecloudadvocacy/acmeshop-user
-  newTag: '2.2.0'
+  newTag: 'latest'
 - name: acmeshop-cart
   newName: gcr.io/vmwarecloudadvocacy/acmeshop-cart
   newTag: 'latest'
