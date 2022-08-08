@@ -38,6 +38,10 @@ spec:
       containers:
         - name: users-redis
           image: redis
+          command:
+            - /bin/sh
+            - -c
+            - redis-server --requirepass "$${REDIS_PASSWORD:?REDIS_PASSWORD variable is not set}" --protected-mode no
           imagePullPolicy: Always
           resources:
             requests:

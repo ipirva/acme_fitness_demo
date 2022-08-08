@@ -11,6 +11,7 @@ spec:
   ports:
     - port: 6379
       name: tcp-redis-cart
+      protocol: TCP
   selector:
     app: cart-redis
     service: cart-redis
@@ -40,7 +41,10 @@ spec:
         - name: cart-redis
           image: redis
           command:
-            - "redis-server"
+            - /bin/sh
+            - -c
+            - redis-server --requirepass "$${REDIS_PASSWORD:?REDIS_PASSWORD variable is not set}" --protected-mode no
+          #- "redis-server"
           imagePullPolicy: Always
           resources:
             requests:
@@ -53,7 +57,7 @@ spec:
           env:
           - name: REDIS-HOST
             value: 'cart-redis'
-          - name: REDIS_PASS
+          - name: REDIS_PASSWORD
             valueFrom:
               secretKeyRef:
                 name: redis-pass

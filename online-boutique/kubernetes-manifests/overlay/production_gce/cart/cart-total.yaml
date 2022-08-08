@@ -47,8 +47,8 @@ spec:
         name: cart
         env:
         - name: REDIS_HOST
-          value: 'cart-redis.acmeshop.cloud'
-        - name: REDIS_PASS
+          value: 'cart-redis'
+        - name: REDIS_PASSWORD
           valueFrom:
             secretKeyRef:
               name: redis-pass
