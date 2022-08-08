@@ -19,22 +19,22 @@ images:
   newTag: '5.0.3-alpine'
 - name: acmeshop-front-end
   newName: gcr.io/vmwarecloudadvocacy/acmeshop-front-end
-  newTag: 'stable'
+  newTag: 'latest'
 - name: acmeshop-front-end-ipirva
   newName: myharbor.play.p2o.be/acmeshop/acmeshop-front-end
-  newTag: 'ipirva-old-v1' # ipirva-v1
+  newTag: 'ipirva-v1' # ipirva-old-v1
 - name: acmeshop-payment
   newName: gcr.io/vmwarecloudadvocacy/acmeshop-payment
-  newTag: '1.0.0'
+  newTag: 'latest'
 - name: acmeshop-catalog
   newName: gcr.io/vmwarecloudadvocacy/acmeshop-catalog
-  newTag: 'stable'
+  newTag: 'latest'
 - name: acmeshop-user
   newName: gcr.io/vmwarecloudadvocacy/acmeshop-user
-  newTag: 'stable'
+  newTag: 'latest'
 - name: acmeshop-cart
   newName: gcr.io/vmwarecloudadvocacy/acmeshop-cart
-  newTag: 'stable'
+  newTag: 'latest'
 - name: acmeshop-order
   newName: gcr.io/vmwarecloudadvocacy/acmeshop-order
-  newTag: 'stable'
+  newTag: 'latest'
