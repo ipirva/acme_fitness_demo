@@ -38,6 +38,10 @@ spec:
       containers:
         - name: users-redis
           image: redis
+          command:
+            - /bin/sh
+            - -c
+            - redis-server --requirepass "$${REDIS_PASSWORD:?REDIS_PASSWORD variable is not set}" --protected-mode no
           imagePullPolicy: Always
           resources:
             requests:
@@ -49,7 +53,7 @@ spec:
               protocol: "TCP"
           env:
           - name: REDIS_HOST
-            value: 'users-redis.acmeshop.cloud'
+            value: 'users-redis'
           - name: REDIS_PASSWORD
             valueFrom:
               secretKeyRef:
