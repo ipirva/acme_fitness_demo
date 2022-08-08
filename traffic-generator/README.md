@@ -17,3 +17,6 @@
 3. Navigate to http://localhost:8089
 
 4. Click on 'New Test' and provide the number of users to simulate.
+
+To avoid urllib InsecureRequestWarning, do:
+`export PYTHONWARNINGS="ignore:Unverified HTTPS request"`

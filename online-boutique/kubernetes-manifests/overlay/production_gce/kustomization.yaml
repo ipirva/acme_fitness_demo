@@ -37,4 +37,4 @@ images:
   newTag: 'latest'
 - name: acmeshop-order
   newName: gcr.io/vmwarecloudadvocacy/acmeshop-order
-  newTag: 'latest'
+  newTag: '2.0.0'
