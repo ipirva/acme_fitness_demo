@@ -63,6 +63,10 @@ spec:
           value: '9000'
         - name: PAYMENT_HOST
           value: 'payment'
+        - name: USER_HOST
+          value: 'users'
+        - name: USER_PORT
+          value: '8081'
         ports:
         - containerPort: 6000
           name: http-order

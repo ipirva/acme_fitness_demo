@@ -57,6 +57,10 @@ spec:
           value: '6379'
         - name: CART_PORT
           value: '5000'
+        - name: USER_HOST
+          value: 'users'
+        - name: USER_PORT
+          value: '8081'
         ports:
         - containerPort: 5000
           name: http-cart
