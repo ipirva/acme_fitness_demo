@@ -29,7 +29,6 @@ spec:
     matchLabels:
       app: catalog
       service: catalog
-      version: v1
   strategy:
     type: Recreate
   replicas: 1
