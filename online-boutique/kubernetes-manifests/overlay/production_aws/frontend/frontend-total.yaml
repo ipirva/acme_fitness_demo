@@ -89,6 +89,7 @@ spec:
         app: shopping
         service: shopping
         version: shopping-v1
+        project: acmeshop
     spec:
       containers:
       - image: acmeshop-front-end-ipirva
