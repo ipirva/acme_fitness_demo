@@ -40,9 +40,7 @@ spec:
         - name: cart-redis
           image: redis
           command:
-            - "redis-server"
-            args:
-            - --protected-mode no
+            - "redis-server --protected-mode no"
           imagePullPolicy: Always
           resources:
             requests:
