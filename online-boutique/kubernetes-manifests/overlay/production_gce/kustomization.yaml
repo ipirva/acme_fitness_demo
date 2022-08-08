@@ -10,3 +10,31 @@ resources:
 - order
 - payment
 # - users
+images:
+- name: mongo
+  newName: mongo
+  newTag: '4'
+- name: redis
+  newName: redis
+  newTag: '5.0.3-alpine'
+- name: acmeshop-front-end
+  newName: gcr.io/vmwarecloudadvocacy/acmeshop-front-end
+  newTag: 'stable'
+- name: acmeshop-front-end-ipirva
+  newName: myharbor.play.p2o.be/acmeshop/acmeshop-front-end
+  newTag: 'ipirva-old-v1' # ipirva-v1
+- name: acmeshop-payment
+  newName: gcr.io/vmwarecloudadvocacy/acmeshop-payment
+  newTag: 'stable'
+- name: acmeshop-catalog
+  newName: gcr.io/vmwarecloudadvocacy/acmeshop-catalog
+  newTag: 'stable'
+- name: acmeshop-user
+  newName: gcr.io/vmwarecloudadvocacy/acmeshop-user
+  newTag: 'stable'
+- name: acmeshop-cart
+  newName: gcr.io/vmwarecloudadvocacy/acmeshop-cart
+  newTag: 'stable'
+- name: acmeshop-order
+  newName: gcr.io/vmwarecloudadvocacy/acmeshop-order
+  newTag: 'stable'

@@ -36,7 +36,7 @@ spec:
     spec:
       containers:
         - name: catalog-mongo
-          image: mongo:4
+          image: mongo
           resources:
             {}
           ports:

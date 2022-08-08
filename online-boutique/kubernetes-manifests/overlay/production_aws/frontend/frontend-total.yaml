@@ -40,7 +40,7 @@ spec:
         version: shopping-v0
     spec:
       containers:
-      - image: gcr.io/vmwarecloudadvocacy/acmeshop-front-end:rel1
+      - image: acmeshop-front-end
         name: shopping-v0
         env:
         - name: FRONTEND_PORT
@@ -90,7 +90,7 @@ spec:
         version: shopping-v1
     spec:
       containers:
-      - image: myharbor.play.p2o.be/acmeshop/acmeshop-front-end:ipirva-old-v1
+      - image: acmeshop-front-end-ipirva
         name: shopping-v1
         imagePullPolicy: Always
         env:

@@ -3,4 +3,4 @@ kind: ConfigMap
 metadata:
   name: cloud
 data:
-  cloud: "gke"
+  cloud: "tce"
