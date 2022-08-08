@@ -22,7 +22,7 @@ images:
   newTag: 'latest'
 - name: acmeshop-front-end-ipirva
   newName: myharbor.play.p2o.be/acmeshop/acmeshop-front-end
-  newTag: 'ipirva-old-v1'
+  newTag: 'ipirva-v1'
 - name: acmeshop-payment
   newName: gcr.io/vmwarecloudadvocacy/acmeshop-payment
   newTag: 'latest'
@@ -37,4 +37,4 @@ images:
   newTag: 'latest'
 - name: acmeshop-order
   newName: gcr.io/vmwarecloudadvocacy/acmeshop-order
-  newTag: '2.0.0'
+  newTag: 'latest'
