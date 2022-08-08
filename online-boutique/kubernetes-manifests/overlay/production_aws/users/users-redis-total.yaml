@@ -48,11 +48,11 @@ spec:
           env:
           - name: REDIS_HOST
             value: 'users-redis'
-          - name: REDIS_PASSWORD
+          - name: REDIS_PASSWORD_VALUE
             valueFrom:
               secretKeyRef:
                 name: users-redis-pass
-                key: auth
+                key: password
           volumeMounts:
             - mountPath: /var/lib/redis
               name: users-redis-data
