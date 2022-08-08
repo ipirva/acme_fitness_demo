@@ -35,6 +35,7 @@ spec:
       labels:
         app: payment
         service: payment
+        project: acmeshop
     spec:
       containers:
       - image: acmeshop-payment

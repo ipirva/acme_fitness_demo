@@ -35,6 +35,7 @@ spec:
       labels:
         app: order
         service: order
+        project: acmeshop
     spec:
       volumes:
       - name: order-data

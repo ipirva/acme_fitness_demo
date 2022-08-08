@@ -38,6 +38,7 @@ spec:
         app: shopping
         service: shopping
         version: shopping-v0
+        project: acmeshop
     spec:
       containers:
       - image: acmeshop-front-end

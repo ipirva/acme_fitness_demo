@@ -32,6 +32,7 @@ spec:
       labels:
         app: cart-redis  # has to match .spec.selector.matchLabels
         service: cart-redis
+        project: acmeshop
     spec:
       containers:
         - name: cart-redis

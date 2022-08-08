@@ -31,6 +31,7 @@ spec:
       labels:
         app: acmefit-users-redis  # has to match .spec.selector.matchLabels
         service: users-redis
+        project: acmeshop
     spec:
       containers:
         - name: users-redis

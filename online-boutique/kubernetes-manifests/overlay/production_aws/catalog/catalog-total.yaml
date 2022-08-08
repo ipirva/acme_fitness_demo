@@ -38,6 +38,7 @@ spec:
         app: catalog
         service: catalog
         version: v1
+        project: acmeshop
     spec:
       volumes:
       - name: catalog-data

@@ -33,6 +33,7 @@ spec:
       labels:
         app: users-mongo  # has to match .spec.selector.matchLabels
         service: users-mongo
+        project: acmeshop
     spec:
       containers:
         - name: users-mongo

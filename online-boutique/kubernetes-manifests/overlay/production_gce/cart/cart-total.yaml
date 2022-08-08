@@ -35,6 +35,7 @@ spec:
       labels:
         app: cart
         service: cart
+        project: acmeshop
     spec:
       volumes:
       - name: cart-data
