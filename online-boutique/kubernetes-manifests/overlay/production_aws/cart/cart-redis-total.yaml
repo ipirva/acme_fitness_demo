@@ -41,6 +41,9 @@ spec:
           image: redis
           command:
             - "redis-server"
+            args:
+            - --requirepass
+            - --protected-mode no
           imagePullPolicy: Always
           resources:
             requests:
