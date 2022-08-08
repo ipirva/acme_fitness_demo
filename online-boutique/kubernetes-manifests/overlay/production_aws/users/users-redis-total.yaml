@@ -49,7 +49,7 @@ spec:
               protocol: "TCP"
           env:
           - name: REDIS_HOST
-            value: 'users-redis'
+            value: 'users-redis.acmeshop.cloud'
           - name: REDIS_PASSWORD
             valueFrom:
               secretKeyRef:

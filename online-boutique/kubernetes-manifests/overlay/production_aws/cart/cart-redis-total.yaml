@@ -52,7 +52,7 @@ spec:
               protocol: "TCP"
           env:
           - name: REDIS-HOST
-            value: 'cart-redis'
+            value: 'cart-redis.acmeshop.cloud'
           - name: REDIS_PASS
             valueFrom:
               secretKeyRef:
