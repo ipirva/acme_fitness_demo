@@ -6,6 +6,7 @@ metadata:
   labels:
     app: catalog
     service: catalog
+    project: acmeshop
 spec:
   ports:
     - name: http-catalog
@@ -22,7 +23,7 @@ metadata:
   labels:
     app: catalog
     service: catalog
-    version: v1
+    project: acmeshop
 spec:
   selector:
     matchLabels:
@@ -37,7 +38,6 @@ spec:
       labels:
         app: catalog
         service: catalog
-        version: v1
         project: acmeshop
     spec:
       volumes:

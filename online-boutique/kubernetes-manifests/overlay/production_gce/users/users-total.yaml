@@ -6,6 +6,7 @@ metadata:
   labels:
     app: users
     service: users
+    project: acmeshop
 spec:
   ports:
     - name: http-users
@@ -22,6 +23,7 @@ metadata:
   labels:
     app: users
     service: users
+    project: acmeshop
 spec:
   selector:
     matchLabels:

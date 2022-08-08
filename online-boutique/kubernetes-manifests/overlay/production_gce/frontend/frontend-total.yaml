@@ -6,6 +6,7 @@ metadata:
   labels:
     app: shopping
     service: shopping
+    project: acmeshop
 spec:
   ports:
     - name: http-shopping
@@ -23,6 +24,7 @@ metadata:
     app: shopping
     service: shopping
     version: shopping-v0
+    project: acmeshop
 spec:
   selector:
     matchLabels:
@@ -74,6 +76,7 @@ metadata:
     app: shopping
     service: shopping
     version: shopping-v1
+    project: acmeshop
 spec:
   selector:
     matchLabels:

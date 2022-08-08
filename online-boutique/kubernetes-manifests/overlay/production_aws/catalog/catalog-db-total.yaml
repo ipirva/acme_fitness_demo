@@ -6,6 +6,7 @@ metadata:
   labels:
     app: catalog-mongo
     service: catalog-mongo
+    project: acmeshop
 spec:
   ports:
     - port: 27017
@@ -22,6 +23,7 @@ metadata:
   labels:
     app: catalog-mongo
     service: catalog-mongo
+    project: acmeshop
 spec:
   selector:
     matchLabels:

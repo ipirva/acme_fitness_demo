@@ -5,6 +5,7 @@ metadata:
   labels:
     app: acmefit-users-redis
     service: users-redis
+    project: acmeshop
 spec:
   ports:
     - port: 6379
@@ -20,6 +21,7 @@ metadata:
   labels:
     app: acmefit-users-redis
     service: users-redis
+    project: acmeshop
 spec:
   selector:
     matchLabels:

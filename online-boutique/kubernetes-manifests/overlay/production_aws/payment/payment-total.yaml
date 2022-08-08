@@ -6,6 +6,7 @@ metadata:
   labels:
     app: payment
     service: payment
+    project: acmeshop
 spec:
   ports:
     - name: http-payment
@@ -22,6 +23,7 @@ metadata:
   labels:
     app: payment
     service: payment
+    project: acmeshop
 spec:
   selector:
     matchLabels:
