@@ -48,7 +48,7 @@ spec:
           env:
           - name: REDIS_HOST
             value: 'users-redis'
-          - name: REDIS_PASSWORD_VALUE
+          - name: REDIS_PASSWORD
             valueFrom:
               secretKeyRef:
                 name: users-redis-pass
