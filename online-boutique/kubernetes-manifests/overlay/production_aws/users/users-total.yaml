@@ -40,7 +40,7 @@ spec:
       - name: users-data
         emptyDir: {}
       containers:
-      - image: gcr.io/vmwarecloudadvocacy/acmeshop-user:1.0.0
+      - image: gcr.io/vmwarecloudadvocacy/acmeshop-user:2.2.0 # 1.0.0
         name: users
         env:
         - name: USERS_DB_HOST
