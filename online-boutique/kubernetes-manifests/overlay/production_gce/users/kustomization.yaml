@@ -5,3 +5,4 @@ resources:
 - users-total.yaml
 - users-db-total.yaml
 - users-db-initdb-configmap.yaml
+- users-redis-total.yaml
