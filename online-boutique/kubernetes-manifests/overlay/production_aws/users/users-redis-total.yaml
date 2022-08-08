@@ -52,7 +52,7 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: users-redis-pass
-                key: password
+                key: auth
           volumeMounts:
             - mountPath: /var/lib/redis
               name: users-redis-data
