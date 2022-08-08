@@ -60,7 +60,7 @@ spec:
         - name: USERS_PORT
           value: '8081'
         - name: REDIS_HOST
-          value: 'users-redis'
+          value: 'users-redis.acmeshop.cloud'
         - name: REDIS_PORT
           value: '6379'
         - name: REDIS_PASSWORD
