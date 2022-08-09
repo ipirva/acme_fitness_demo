@@ -1,14 +1,20 @@
+metadata:
+  annotations:
+    allspark: disable-update
 spec:
   subsets:
-  - name: shopping-v0
-    labels:
+  - labels:
       version: shopping-v0
+    name: shopping-v0
     trafficPolicy:
       tls:
-        mode: ISTIO_MUTUAL
+        mode: DISABLE
   - labels:
       version: shopping-v1
     name: shopping-v1
     trafficPolicy:
       tls:
         mode: DISABLE
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL
