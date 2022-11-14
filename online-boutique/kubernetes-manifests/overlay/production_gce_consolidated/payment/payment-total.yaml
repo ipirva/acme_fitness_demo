@@ -1,0 +1,50 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: payment
+  labels:
+    app: payment
+    service: payment
+    project: acmeshop
+spec:
+  ports:
+    - name: http-payment
+      protocol: TCP
+      port: 9000
+  selector:
+    app: payment
+    service: payment
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payment
+  labels:
+    app: payment
+    service: payment
+    project: acmeshop
+spec:
+  selector:
+    matchLabels:
+      app: payment
+      service: payment
+  strategy:
+    type: Recreate
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: payment
+        service: payment
+        project: acmeshop
+    spec:
+      containers:
+      - image: acmeshop-payment
+        name: payment
+        env:
+        - name: PAYMENT_PORT
+          value: '9000'
+        ports:
+        - containerPort: 9000
+          name: http-payment

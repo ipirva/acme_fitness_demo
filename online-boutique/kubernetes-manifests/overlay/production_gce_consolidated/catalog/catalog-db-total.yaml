@@ -1,0 +1,72 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: catalog-mongo
+  labels:
+    app: catalog-mongo
+    service: catalog-mongo
+    project: acmeshop
+spec:
+  ports:
+    - port: 27017
+      name: mongo-catalog
+      protocol: TCP
+  selector:
+    app: catalog-mongo
+    service: catalog-mongo
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: catalog-mongo
+  labels:
+    app: catalog-mongo
+    service: catalog-mongo
+    project: acmeshop
+spec:
+  selector:
+    matchLabels:
+      app: catalog-mongo  # has to match .spec.template.metadata.labels
+      service: catalog-mongo
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: catalog-mongo  # has to match .spec.selector.matchLabels
+        service: catalog-mongo
+        project: acmeshop
+    spec:
+      containers:
+        - name: catalog-mongo
+          image: mongo
+          resources:
+            {}
+          ports:
+            - name: mongo-catalog
+              containerPort: 27017
+              protocol: "TCP"
+          env:
+          - name: MONGO_INITDB_ROOT_USERNAME
+            value: 'mongoadmin'
+          - name: MONGO_INITDB_DATABASE
+            value: 'acmefit'
+          - name: MONGO_INITDB_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: catalog-mongo-pass
+                key: password
+          volumeMounts:
+            - mountPath: /data/db
+              name: mongodata
+            - mountPath: /docker-entrypoint-initdb.d
+              name: mongo-initdb
+      volumes:
+        - name: mongodata
+          emptyDir: {}
+        - name: mongo-initdb
+          configMap:
+            name: catalog-initdb-config
+#        - name: mongodata
+#          persistentVolumeClaim:
+#            claimName: mongodata

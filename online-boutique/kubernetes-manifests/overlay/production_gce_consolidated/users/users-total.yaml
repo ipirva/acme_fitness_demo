@@ -1,0 +1,83 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: users
+  labels:
+    app: users
+    service: users
+    project: acmeshop
+spec:
+  ports:
+    - name: http-users
+      protocol: TCP
+      port: 8081
+  selector:
+    app: users
+    service: users
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: users
+  labels:
+    app: users
+    service: users
+    project: acmeshop
+spec:
+  selector:
+    matchLabels:
+      app: users
+      service: users
+  strategy:
+    type: Recreate
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: users
+        service: users
+        project: acmeshop
+    spec:
+      volumes:
+      - name: users-data
+        emptyDir: {}
+      containers:
+      - image: acmeshop-user
+        name: users
+        env:
+        - name: USERS_DB_HOST
+          value: 'users-mongo'
+        - name: USERS_DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: users-mongo-pass
+              key: password
+        - name: USERS_DB_PORT
+          value: '27017'
+        - name: USERS_DB_USERNAME
+          value: 'mongoadmin'
+        - name: USERS_PORT
+          value: '8081'
+        - name: REDIS_HOST
+          value: 'users-redis'
+        - name: REDIS_PORT
+          value: '6379'
+        - name: REDIS_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: redis-pass
+              key: password
+        ports:
+        - containerPort: 8081
+          name: http-users
+        volumeMounts:
+        - mountPath: "/data"
+          name: "users-data"
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "500m"

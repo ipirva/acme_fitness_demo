@@ -1,0 +1,40 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../../base/
+- secrets
+- configs
+- cart
+- catalog
+- frontend
+- order
+- payment
+- users
+images:
+- name: mongo
+  newName: mongo
+  newTag: '4'
+- name: redis
+  newName: redis
+  newTag: 'alpine' #5.0.3-alpine
+- name: acmeshop-front-end
+  newName: gcr.io/vmwarecloudadvocacy/acmeshop-front-end
+  newTag: 'latest'
+- name: acmeshop-front-end-ipirva
+  newName: myharbor.play.p2o.be/acmeshop/acmeshop-front-end
+  newTag: 'ipirva-v1'
+- name: acmeshop-payment
+  newName: gcr.io/vmwarecloudadvocacy/acmeshop-payment
+  newTag: 'stable'
+- name: acmeshop-catalog
+  newName: gcr.io/vmwarecloudadvocacy/acmeshop-catalog
+  newTag: 'latest'
+- name: acmeshop-user
+  newName: gcr.io/vmwarecloudadvocacy/acmeshop-user
+  newTag: 'latest'
+- name: acmeshop-cart
+  newName: gcr.io/vmwarecloudadvocacy/acmeshop-cart
+  newTag: 'latest'
+- name: acmeshop-order
+  newName: gcr.io/vmwarecloudadvocacy/acmeshop-order
+  newTag: 'stable'
